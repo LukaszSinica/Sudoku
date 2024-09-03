@@ -3,6 +3,8 @@ package com.LukaszSinica.Sudoku.Sudoku.app;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,10 +19,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // populate the array [x]
 // get the full board [x]
 // print the board [x]
-
+// Creating player board with blank spaces[x]
+// 
+//
+//
+//
 
 @SpringBootApplication
 public class SudokuAppApplication {
+	static final int DEFAULT_NUMBER_OF_ERRORS = 8;
+
 	static Integer[][] board = new Integer[9][9];
 	static Integer[] sudokuNumbers = {1,2,3,4,5,6,7,8,9};
     
@@ -29,8 +37,29 @@ public class SudokuAppApplication {
 		SudokuAppApplication sudokuApp = new SudokuAppApplication();
 		sudokuApp.setStartBoard(board);
 		sudokuApp.getTheBoard(board, sudokuNumbers);
-		sudokuApp.printBoard(board);
-
+		Integer[][] playerBoard = board;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Choose difficulty of the board: ");
+		System.out.println("1 - Easy, 2 - Medium, 3 - Hard");
+		System.out.println("If you want to exit type: 0");
+        Integer input = scan.nextInt();
+        if(input == 0) {
+			System.out.println("Exit the program");
+			
+		}
+        else {
+			sudokuApp.preparePlayerBoard(playerBoard, input);
+			sudokuApp.printBoard(playerBoard);
+			System.out.println("The board is starting from [0,0] to [8,8].");
+			System.out.println("If you want to type number in the board type like this example: 11 for 2 row and 2 column");
+			System.out.println("You can still exit by typing: 0");
+			while(input != 0) {
+				input = scan.nextInt();
+			}
+			if(input == 0) {
+				System.out.println("Exit the program");
+			}
+        }
 	}
 	
 	private void setStartBoard(Integer[][] board) {
@@ -50,7 +79,7 @@ public class SudokuAppApplication {
 		 	        Collections.shuffle(intList);  
 		 	        intList.toArray(sudokuNumbers);
 			        for(int value : sudokuNumbers) {
-			        	//checking row
+			        	//checking row and col
 			        	if(!checkRow(board[i], value)  && !checkCol(board, value, j)) {
 			        		Integer[][] square = new Integer[3][3];
 			        		checkWorkingSquare(square, board, i, j);
@@ -130,5 +159,23 @@ public class SudokuAppApplication {
 	        System.out.println(); // Move to the next line after each row
 	    }
 	}
-
+	
+	private void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
+		Random random = new Random();
+		String[] chosenFields = new String[difficulty * DEFAULT_NUMBER_OF_ERRORS];
+		chosenFields[(difficulty * DEFAULT_NUMBER_OF_ERRORS) - 1] = "0";
+		int i = 0;
+		while(chosenFields[(difficulty * DEFAULT_NUMBER_OF_ERRORS) - 1] == "0") {
+			int row = random.nextInt(8) + 0;
+			int col = random.nextInt(8) + 0;
+			String stringField = String.valueOf(row) + String.valueOf(col);
+			List<String> chosenFieldsList = Arrays.asList(chosenFields);
+			if(chosenFieldsList.contains(stringField)) {
+				continue;
+			}
+			chosenFields[i] = stringField;
+			playerBoard[row][col] = 0;
+			i++;
+		}
+	}
 }
