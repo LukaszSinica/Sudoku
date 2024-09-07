@@ -20,10 +20,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // get the full board [x]
 // print the board [x]
 // Creating player board with blank spaces[x]
-// 
-//
-//
-//
+// Allow player to chose the row and col he want to put the number [x]
+// ALlow player to chose the number he want to select [x]
+// Check for answer [x]
+// Return the board with added answer on the board [x] 
 
 @SpringBootApplication
 public class SudokuAppApplication {
@@ -34,10 +34,13 @@ public class SudokuAppApplication {
     
 	public static void main(String[] args) {
 		SpringApplication.run(SudokuAppApplication.class, args);
-		SudokuAppApplication sudokuApp = new SudokuAppApplication();
-		sudokuApp.setStartBoard(board);
-		sudokuApp.getTheBoard(board, sudokuNumbers);
-		Integer[][] playerBoard = board;
+		setStartBoard(board);
+		getTheBoard(board, sudokuNumbers);
+		
+		Integer[][] playerBoard = board.clone();
+		for(int i = 0; i < 9; i++) {
+			playerBoard[i] = Arrays.copyOf(board[i], board.length);
+		}
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Choose difficulty of the board: ");
 		System.out.println("1 - Easy, 2 - Medium, 3 - Hard");
@@ -45,16 +48,31 @@ public class SudokuAppApplication {
         Integer input = scan.nextInt();
         if(input == 0) {
 			System.out.println("Exit the program");
-			
 		}
         else {
-			sudokuApp.preparePlayerBoard(playerBoard, input);
-			sudokuApp.printBoard(playerBoard);
-			System.out.println("The board is starting from [0,0] to [8,8].");
-			System.out.println("If you want to type number in the board type like this example: 11 for 2 row and 2 column");
+			preparePlayerBoard(playerBoard, input);
+			printBoard(playerBoard);
+			System.out.println("---------------------------");
+			printBoard(board);
+
 			System.out.println("You can still exit by typing: 0");
+
 			while(input != 0) {
+				System.out.println("Chose Row: 0 - 8");
+		        input = scan.nextInt();
+		        int row = input;
+				System.out.println("Chose Column: 0 - 8 ");
+		        input = scan.nextInt();
+		        int col = input;
+				System.out.println("Type number you want to input: 1 - 9 ");
 				input = scan.nextInt();
+				int tileAnswer = input;
+				if(row < 0 || row > 8 || col < 0 || col > 8) {
+					System.out.println("You chosed row or column that is out of scope");
+				} else {
+					checkAnswer(row, col, tileAnswer, board, playerBoard);
+					printBoard(playerBoard);
+				}
 			}
 			if(input == 0) {
 				System.out.println("Exit the program");
@@ -62,7 +80,18 @@ public class SudokuAppApplication {
         }
 	}
 	
-	private void setStartBoard(Integer[][] board) {
+	private static void checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
+		System.out.println(board[row][col]);
+		if(playerBoard[row][col] != 0) {
+			System.out.println("The tile is already answered");
+		} else if(board[row][col] == tileAnswer) {
+			playerBoard[row][col] = tileAnswer;
+		} else {
+			System.out.println("Wrong answer");
+		}
+	}
+
+	private static void setStartBoard(Integer[][] board) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board.length; j++) {
 				board[i][j] = 0;
@@ -70,7 +99,7 @@ public class SudokuAppApplication {
 		}
 	}
 
-	private boolean getTheBoard(Integer[][] board, Integer[] sudokuNumbers) {
+	private static boolean getTheBoard(Integer[][] board, Integer[] sudokuNumbers) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board[i].length; j++) {
 		        if(board[i][j] == 0) {
@@ -129,18 +158,18 @@ public class SudokuAppApplication {
 	    }
 	}
 	
-	private static boolean checkBoard(Integer[][] board) {
-		for(int i = 0; i < board.length; i++) {
-			for(int j = 0; j < board.length; j++) {
-				if(board[i][j] == 0) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
+//	private static boolean checkBoard(Integer[][] board) {
+//		for(int i = 0; i < board.length; i++) {
+//			for(int j = 0; j < board.length; j++) {
+//				if(board[i][j] == 0) {
+//					return false;
+//				}
+//			}
+//		}
+//		return true;
+//	}
 	
-	private void printBoard(Integer[][] board) {
+	private static void printBoard(Integer[][] board) {
 	    for (int i = 0; i < board.length; i++) {
 	        if (i % 3 == 0 && i != 0) {
 	            // Print a horizontal line after every 3 rows
@@ -160,7 +189,7 @@ public class SudokuAppApplication {
 	    }
 	}
 	
-	private void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
+	private static void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
 		Random random = new Random();
 		String[] chosenFields = new String[difficulty * DEFAULT_NUMBER_OF_ERRORS];
 		chosenFields[(difficulty * DEFAULT_NUMBER_OF_ERRORS) - 1] = "0";
