@@ -1,13 +1,10 @@
-package com.LukaszSinica.Sudoku.Sudoku.app;
+package org.openjfx.javafx;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 // Sudoku
@@ -25,15 +22,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // Check for answer [x]
 // Return the board with added answer on the board [x]
 
-@SpringBootApplication
-public class SudokuAppApplication2 {
+public class Sudoku {
 	static final int DEFAULT_NUMBER_OF_ERRORS = 8;
 
 	static Integer[][] board = new Integer[9][9];
 	static Integer[] sudokuNumbers = {1,2,3,4,5,6,7,8,9};
 
 	public static void main(String[] args) {
-		SpringApplication.run(SudokuAppApplication2.class, args);
 		setStartBoard(board);
 		getTheBoard(board, sudokuNumbers);
 
