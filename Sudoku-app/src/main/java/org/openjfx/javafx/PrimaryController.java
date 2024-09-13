@@ -1,16 +1,23 @@
 package org.openjfx.javafx;
 
-import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 
 public class PrimaryController {
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-    @FXML
-    private void switchToThird() throws IOException {
-        App.setRoot("third");
+	static ObservableList<String> list = FXCollections.observableArrayList();
+	
+	@FXML
+	private  ChoiceBox<String> difficulty;
+	
+    public void loadDifficulty() {
+    	list.removeAll(list);
+    	String easy = "easy";
+    	String medium = "medium";
+    	String hard = "hard";
+    	list.addAll(easy,medium,hard);
+    	difficulty.getItems().addAll(list);
     }
 }
