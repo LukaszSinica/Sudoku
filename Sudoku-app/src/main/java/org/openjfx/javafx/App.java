@@ -19,7 +19,6 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary.fxml"));
         Parent root = (Parent) fxmlLoader.load();
-        ((PrimaryController) fxmlLoader.getController()).loadDifficulty();
         scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();

@@ -1,16 +1,27 @@
 package org.openjfx.javafx;
 
+import java.awt.Button;
+import java.io.IOException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 
-public class PrimaryController {
+public class PrimaryController{
 
 	static ObservableList<String> list = FXCollections.observableArrayList();
 	
 	@FXML
 	private  ChoiceBox<String> difficulty;
+	
+	@FXML
+	private Button button;
+	
+    @FXML
+    public void initialize() {
+    	loadDifficulty();
+    }
 	
     public void loadDifficulty() {
     	list.removeAll(list);
@@ -19,5 +30,10 @@ public class PrimaryController {
     	String hard = "hard";
     	list.addAll(easy,medium,hard);
     	difficulty.getItems().addAll(list);
+    }
+    
+    @FXML
+    private void startGame() throws IOException {
+    	App.setRoot("gamePanel");
     }
 }
