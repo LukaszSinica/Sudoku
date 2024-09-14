@@ -30,6 +30,7 @@ public class PrimaryController{
     	String hard = "hard";
     	list.addAll(easy,medium,hard);
     	difficulty.getItems().addAll(list);
+    	difficulty.setValue(easy);
     }
     
     @FXML
