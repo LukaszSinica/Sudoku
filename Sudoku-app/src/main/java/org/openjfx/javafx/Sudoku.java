@@ -75,7 +75,7 @@ public class Sudoku {
         }
 	}
 
-	private static void checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
+	static void checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
 		System.out.println(board[row][col]);
 		if(playerBoard[row][col] != 0) {
 			System.out.println("The tile is already answered");
@@ -86,7 +86,7 @@ public class Sudoku {
 		}
 	}
 
-	private static void setStartBoard(Integer[][] board) {
+	static void setStartBoard(Integer[][] board) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board.length; j++) {
 				board[i][j] = 0;
@@ -94,7 +94,7 @@ public class Sudoku {
 		}
 	}
 
-	private static boolean getTheBoard(Integer[][] board, Integer[] sudokuNumbers) {
+	static boolean getTheBoard(Integer[][] board, Integer[] sudokuNumbers) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board[i].length; j++) {
 		        if(board[i][j] == 0) {
@@ -184,7 +184,7 @@ public class Sudoku {
 	    }
 	}
 
-	private static void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
+	static void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
 		Random random = new Random();
 		String[] chosenFields = new String[difficulty * DEFAULT_NUMBER_OF_ERRORS];
 		chosenFields[(difficulty * DEFAULT_NUMBER_OF_ERRORS) - 1] = "0";

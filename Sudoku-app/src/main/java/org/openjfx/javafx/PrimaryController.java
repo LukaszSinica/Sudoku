@@ -6,7 +6,11 @@ import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.Stage;
 
 public class PrimaryController{
 
@@ -25,9 +29,9 @@ public class PrimaryController{
 	
     public void loadDifficulty() {
     	list.removeAll(list);
-    	String easy = "easy";
-    	String medium = "medium";
-    	String hard = "hard";
+    	String easy = "Easy";
+    	String medium = "Medium";
+    	String hard = "Hard";
     	list.addAll(easy,medium,hard);
     	difficulty.getItems().addAll(list);
     	difficulty.setValue(easy);
@@ -35,6 +39,16 @@ public class PrimaryController{
     
     @FXML
     private void startGame() throws IOException {
-    	App.setRoot("gamePanel");
+        String selectedDifficulty = difficulty.getValue();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gamePanel.fxml"));
+        Parent root = loader.load();
+        
+        GamePanelController gamePanelController = loader.getController();
+        gamePanelController.setDifficulty(selectedDifficulty);
+        
+        Stage stage = (Stage) difficulty.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
