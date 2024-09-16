@@ -129,5 +129,7 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Label layoutX="379.0" layoutY="52.0" text="Total of errors:" />
+      <Label fx:id="errorCounter" layoutX="463.0" layoutY="52.0" text="0" />
    </children>
 </Pane>

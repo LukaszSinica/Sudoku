@@ -47,7 +47,7 @@ public class PrimaryController{
         gamePanelController.setDifficulty(selectedDifficulty);
         
         Stage stage = (Stage) difficulty.getScene().getWindow();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();
     }

@@ -75,14 +75,15 @@ public class Sudoku {
         }
 	}
 
-	static void checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
+	static boolean checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
 		System.out.println(board[row][col]);
 		if(playerBoard[row][col] != 0) {
-			System.out.println("The tile is already answered");
+			return false;
 		} else if(board[row][col] == tileAnswer) {
 			playerBoard[row][col] = tileAnswer;
+			return true;
 		} else {
-			System.out.println("Wrong answer");
+			return false;
 		}
 	}
 
