@@ -28,55 +28,7 @@ public class Sudoku {
 	static Integer[][] board = new Integer[9][9];
 	static Integer[] sudokuNumbers = {1,2,3,4,5,6,7,8,9};
 
-	public static void main(String[] args) {
-		setStartBoard(board);
-		getTheBoard(board, sudokuNumbers);
-
-		Integer[][] playerBoard = board.clone();
-		for(int i = 0; i < 9; i++) {
-			playerBoard[i] = Arrays.copyOf(board[i], board.length);
-		}
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Choose difficulty of the board: ");
-		System.out.println("1 - Easy, 2 - Medium, 3 - Hard");
-		System.out.println("If you want to exit type: 0");
-        Integer input = scan.nextInt();
-        if(input == 0) {
-			System.out.println("Exit the program");
-		}
-        else {
-			preparePlayerBoard(playerBoard, input);
-			printBoard(playerBoard);
-			System.out.println("---------------------------");
-			printBoard(board);
-
-			System.out.println("You can still exit by typing: 0");
-
-			while(input != 0) {
-				System.out.println("Chose Row: 0 - 8");
-		        input = scan.nextInt();
-		        int row = input;
-				System.out.println("Chose Column: 0 - 8 ");
-		        input = scan.nextInt();
-		        int col = input;
-				System.out.println("Type number you want to input: 1 - 9 ");
-				input = scan.nextInt();
-				int tileAnswer = input;
-				if(row < 0 || row > 8 || col < 0 || col > 8) {
-					System.out.println("You chosed row or column that is out of scope");
-				} else {
-					checkAnswer(row, col, tileAnswer, board, playerBoard);
-					printBoard(playerBoard);
-				}
-			}
-			if(input == 0) {
-				System.out.println("Exit the program");
-			}
-        }
-	}
-
 	static boolean checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
-		System.out.println(board[row][col]);
 		if(playerBoard[row][col] != 0) {
 			return false;
 		} else if(board[row][col] == tileAnswer) {
@@ -151,37 +103,6 @@ public class Sudoku {
 	        for (int j = 0; j < 3; j++) {
 	            square[i][j] = board[startRow + i][startCol + j];
 	        }
-	    }
-	}
-
-//	private static boolean checkBoard(Integer[][] board) {
-//		for(int i = 0; i < board.length; i++) {
-//			for(int j = 0; j < board.length; j++) {
-//				if(board[i][j] == 0) {
-//					return false;
-//				}
-//			}
-//		}
-//		return true;
-//	}
-
-	private static void printBoard(Integer[][] board) {
-	    for (int i = 0; i < board.length; i++) {
-	        if (i % 3 == 0 && i != 0) {
-	            // Print a horizontal line after every 3 rows
-	            System.out.println("------+-------+------");
-	        }
-
-	        for (int j = 0; j < board[i].length; j++) {
-	            if (j % 3 == 0 && j != 0) {
-	                // Print a vertical line after every 3 columns
-	                System.out.print("| ");
-	            }
-
-	            // Print the board element
-	            System.out.print(board[i][j] == 0 ? ". " : board[i][j] + " "); // Using '.' for empty cells
-	        }
-	        System.out.println(); // Move to the next line after each row
 	    }
 	}
 

@@ -20,7 +20,7 @@ public class GamePanelController {
     private Integer[][] playerBoard = new Integer[9][9]; 
     private String difficulty; 
     private Sudoku sudoku;
-
+    private boolean gameOver = false;
     @FXML
     private GridPane sudokuGrid;
 	
@@ -29,6 +29,9 @@ public class GamePanelController {
     
     @FXML
     private Label errorCounter;
+    
+    @FXML
+    private Label mainLabel;
     
     @FXML
     public void initialize() {
@@ -109,6 +112,9 @@ public class GamePanelController {
     }
 
     private void checkSingleCell(int row, int col) {
+        if (gameOver) {
+            return;
+        }
         TextField cell = textFields[row][col];
         String userInput = cell.getText();
 
@@ -121,7 +127,10 @@ public class GamePanelController {
                 } else {
                     cell.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
                     counter++;
-                    errorCounter.setText(counter.toString());
+                    errorCounter.setText(counter.toString() + "/3");
+                }
+                if(counter == 3 ) {
+                	endTheGame();
                 }
             } catch (NumberFormatException e) {
                 cell.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
@@ -132,6 +141,14 @@ public class GamePanelController {
     }
 
 
+    private void endTheGame() {
+        gameOver = true;
+    	mainLabel.setText("Game Over");
+    	mainLabel.setStyle("-fx-text-fill: red");
+    	sudokuGrid.setDisable(true);
+    	sudokuGrid.requestFocus();
+    }
+    
 	public Sudoku getSudoku() {
 		return sudoku;
 	}

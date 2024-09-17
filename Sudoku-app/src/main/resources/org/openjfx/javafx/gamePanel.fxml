@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.javafx.GamePanelController">
    <children>
-      <Label layoutX="256.0" layoutY="13.0" prefHeight="46.0" prefWidth="88.0" text="Game">
+      <Label fx:id="mainLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="13.0" prefHeight="47.0" prefWidth="215.0">
          <font>
             <Font size="32.0" />
          </font>
