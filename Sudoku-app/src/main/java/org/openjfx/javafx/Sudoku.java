@@ -6,22 +6,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-
-// Sudoku
-// create 9x9 array with 0 in it [x]
-// create 1 to 9 array  [x]
-// Function for getting board: [x]
-// Check if row have the number [x]
-// Check if col have the number [x]
-// populate the array [x]
-// get the full board [x]
-// print the board [x]
-// Creating player board with blank spaces[x]
-// Allow player to chose the row and col he want to put the number [x]
-// ALlow player to chose the number he want to select [x]
-// Check for answer [x]
-// Return the board with added answer on the board [x]
-
 public class Sudoku {
 	static final int DEFAULT_NUMBER_OF_ERRORS = 8;
 
