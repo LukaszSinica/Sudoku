@@ -18,7 +18,7 @@ public class GamePanelController {
 
 	private Integer counter = 0;
     private TextField[][] textFields = new TextField[9][9];
-    private Integer[][] playerBoard = new Integer[9][9]; 
+    public Integer[][] playerBoard = new Integer[9][9]; 
     private String difficulty; 
     private Sudoku sudoku;
     private Integer numberOfAnswers = 0;
@@ -62,11 +62,11 @@ public class GamePanelController {
         difficultyLabel.setText(difficulty);
         int difficultyNumber = convertDifficultyToNumber(difficulty);
         
-        Sudoku.setStartBoard(Sudoku.board);
-        Sudoku.getTheBoard(Sudoku.board, Sudoku.sudokuNumbers);
+        Sudoku.setStartBoard(Sudoku.getBoard());
+        Sudoku.getTheBoard(Sudoku.getBoard(), Sudoku.getSudokuNumbers());
         
         for (int i = 0; i < 9; i++) {
-            playerBoard[i] = Arrays.copyOf(Sudoku.board[i], 9);
+            playerBoard[i] = Arrays.copyOf(Sudoku.getBoard()[i], 9);
         }
         
         Sudoku.preparePlayerBoard(playerBoard, difficultyNumber);
@@ -135,7 +135,7 @@ public class GamePanelController {
             try {
                 int number = Integer.parseInt(userInput);
 
-                if (Sudoku.checkAnswer(row, col, number, Sudoku.board, playerBoard)) {
+                if (Sudoku.checkAnswer(row, col, number, Sudoku.getBoard(), playerBoard)) {
                     cell.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
                     cell.setEditable(false);
                     numberOfAnsweredTiles++;

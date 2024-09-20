@@ -11,13 +11,13 @@ import java.io.IOException;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class SudokuMain extends Application {
 
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SudokuMain.class.getResource("primary.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         scene = new Scene(root, 640, 480);
         stage.setScene(scene);
@@ -29,7 +29,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SudokuMain.class.getResource(fxml + ".fxml"));
         
         return fxmlLoader.load();
     }

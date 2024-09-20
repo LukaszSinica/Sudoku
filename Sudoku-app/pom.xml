@@ -14,22 +14,74 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
             <version>22.0.2</version>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>22.0.2</version>
+            <classifier>mac</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>22.0.2</version>
+            <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
             <version>22.0.2</version>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>22.0.2</version>
+            <classifier>mac</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>22.0.2</version>
+            <classifier>linux</classifier>
+        </dependency>             
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>22.0.2</version>
+            <classifier>win</classifier>            
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>22.0.2</version>
+            <classifier>mac</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>22.0.2</version>
+            <classifier>linux</classifier>
+        </dependency>                
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>22.0.2</version>
+            <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>22.0.2</version>
+            <classifier>mac</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>22.0.2</version>
+            <classifier>linux</classifier>
+        </dependency>               
     </dependencies>
     <build>
         <plugins>
@@ -51,11 +103,31 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.openjfx.javafx.App</mainClass>
+                            <mainClass>org.openjfx.javafx.MainLauncher</mainClass>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+	        <plugin>
+	          <groupId>org.apache.maven.plugins</groupId>
+	          <artifactId>maven-shade-plugin</artifactId>
+	          <version>3.6.0</version>
+	          <executions>
+	            <execution>
+	              <phase>package</phase>
+	              <goals>
+	                <goal>shade</goal>
+	              </goals>
+	              <configuration>
+	                <transformers>
+	                  <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+	                      <Main-Class>org.openjfx.javafx.MainLauncher</Main-Class>
+	                  </transformer>
+	                </transformers>
+	              </configuration>
+	            </execution>
+	          </executions>
+	        </plugin>
         </plugins>
     </build>
 </project>

@@ -7,12 +7,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Sudoku {
-	static final int DEFAULT_NUMBER_OF_ERRORS = 8;
+	public static final int DEFAULT_NUMBER_OF_ERRORS = 8;
 
-	static Integer[][] board = new Integer[9][9];
-	static Integer[] sudokuNumbers = {1,2,3,4,5,6,7,8,9};
+	public static Integer[][] board = new Integer[9][9];
+	public static Integer[] sudokuNumbers = {1,2,3,4,5,6,7,8,9};
 
-	static boolean checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
+	public static boolean checkAnswer(Integer row, Integer col, Integer tileAnswer, Integer[][] board, Integer[][] playerBoard) {
 		if(playerBoard[row][col] != 0) {
 			return false;
 		} else if(board[row][col] == tileAnswer) {
@@ -23,7 +23,7 @@ public class Sudoku {
 		}
 	}
 
-	static void setStartBoard(Integer[][] board) {
+	public static void setStartBoard(Integer[][] board) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board.length; j++) {
 				board[i][j] = 0;
@@ -31,7 +31,7 @@ public class Sudoku {
 		}
 	}
 
-	static boolean getTheBoard(Integer[][] board, Integer[] sudokuNumbers) {
+	public static boolean getTheBoard(Integer[][] board, Integer[] sudokuNumbers) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board[i].length; j++) {
 		        if(board[i][j] == 0) {
@@ -90,7 +90,7 @@ public class Sudoku {
 	    }
 	}
 
-	static void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
+	public static void preparePlayerBoard(Integer[][] playerBoard, Integer difficulty) {
 		Random random = new Random();
 		String[] chosenFields = new String[difficulty * DEFAULT_NUMBER_OF_ERRORS];
 		chosenFields[(difficulty * DEFAULT_NUMBER_OF_ERRORS) - 1] = "0";
@@ -107,5 +107,21 @@ public class Sudoku {
 			playerBoard[row][col] = 0;
 			i++;
 		}
+	}
+
+	public static Integer[][] getBoard() {
+		return board;
+	}
+
+	public static void setBoard(Integer[][] board) {
+		Sudoku.board = board;
+	}
+
+	public static Integer[] getSudokuNumbers() {
+		return sudokuNumbers;
+	}
+
+	public static void setSudokuNumbers(Integer[] sudokuNumbers) {
+		Sudoku.sudokuNumbers = sudokuNumbers;
 	}
 }
