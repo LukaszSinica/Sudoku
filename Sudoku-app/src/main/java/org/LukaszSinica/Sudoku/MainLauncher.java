@@ -1,4 +1,4 @@
-package org.openjfx.javafx;
+package org.lukaszsinica.sudoku;
 
 public class MainLauncher {
 
