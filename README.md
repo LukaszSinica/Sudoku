@@ -24,7 +24,7 @@ If the player managed to 3 times wrong answer, the game stops and tells the play
 </p>
 
 
-For the difficulty there is 3 levels of difficulty:  
+For the difficulty there are 3 levels of difficulty:  
 * Easy - hides 8 tiles in the board  
 * Medium - hides 16 tiles in the board  
 * Hard - hides 24 tiles in the board  
