@@ -39,7 +39,7 @@ For the difficulty there are 3 levels of difficulty:
 There are 3 ways to play the game. All of the methods requires to download the repository and IDE if you don't want to open trought the .jar.
 
 1. In IDE (I use eclipse), You have to import the repository as a maven project. Then You can run the MainLauncher.java as a Java Applicaton.
-2. This method is the same as the first one, but You can use maven to start the game through the command: maven javafx:run
+2. This method is the same as the first one, but You can use maven to start the game through the command: ```maven javafx:run```
 3. Last method is to go to the target folder and in command-line, if you have java installed type ```java -jar sudoku-0.0.1-SNAPSHOT.jar```.
 
 
