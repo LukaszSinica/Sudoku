@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\Sudoku\Sudoku-app\target\sudoku-1.0-SNAPSHOT.jar</jar>
+  <outfile>D:\Sudoku\dist\Sudoku.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <jre>
+    <path>D:\Sudoku\dist\jdk-21.0.7+6-jre\bin</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+    <opt>--enable-preview --add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED</opt>
+  </jre>
+</launch4jConfig>

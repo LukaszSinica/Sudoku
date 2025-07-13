@@ -1,0 +1,5 @@
+org\LukaszSinica\Sudoku\SudokuMain.class
+org\LukaszSinica\Sudoku\PrimaryController.class
+org\LukaszSinica\Sudoku\Sudoku.class
+org\LukaszSinica\Sudoku\MainLauncher.class
+org\LukaszSinica\Sudoku\GamePanelController.class
