@@ -1,0 +1,15 @@
+.cell {
+    -fx-border-width: 1;
+}
+
+.cell.thick-right {
+    -fx-border-width: 1 2 1 1;
+}
+
+.cell.thick-bottom {
+    -fx-border-width: 1 1 2 1;
+}
+
+.cell.thick-right-bottom {
+    -fx-border-width: 1 2 2 1;
+}

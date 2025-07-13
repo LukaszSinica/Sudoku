@@ -1,4 +1,4 @@
-package org.lukaszsinica.sudoku;
+package org.LukaszSinica.Sudoku;
 
 import java.util.Arrays;
 import java.util.Collections;

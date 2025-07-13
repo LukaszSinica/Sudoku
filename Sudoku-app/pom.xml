@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.lukaszsinica</groupId>
+    <groupId>org.LukaszSinica</groupId>
     <artifactId>sudoku</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
@@ -54,7 +54,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.lukaszsinica.sudoku.MainLauncher</mainClass>
+                            <mainClass>org.LukaszSinica.Sudoku.MainLauncher</mainClass>
                         </configuration>
                     </execution>
                 </executions>
@@ -72,7 +72,7 @@
 	              <configuration>
 	                <transformers>
 	                  <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-	                      <Main-Class>org.lukaszsinica.sudoku.MainLauncher</Main-Class>
+	                      <Main-Class>org.LukaszSinica.Sudoku.MainLauncher</Main-Class>
 	                  </transformer>
 	                </transformers>
 	              </configuration>

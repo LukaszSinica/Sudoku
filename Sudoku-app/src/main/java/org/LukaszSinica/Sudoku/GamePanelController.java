@@ -1,4 +1,4 @@
-package org.lukaszsinica.sudoku;
+package org.LukaszSinica.Sudoku;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -44,6 +44,7 @@ public class GamePanelController {
 
 		Stage stage = (Stage) sudokuGrid.getScene().getWindow();
 		Scene scene = new Scene(root, 640, 480);
+
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -154,7 +155,19 @@ public class GamePanelController {
 					checkSingleCell(currentRow, currentCol);
 				});
 				cell.setAlignment(Pos.CENTER);
-				cell.setStyle("-fx-font-weight: bold");
+				StringBuilder style = new StringBuilder("-fx-font-weight: bold; -fx-border-color: black; -fx-border-width: ");
+
+				boolean thickTop = (row % 3 == 0);
+				boolean thickLeft = (col % 3 == 0);
+				boolean thickRight = (col == 8);
+				boolean thickBottom = (row == 8);
+
+				style.append(thickTop ? "2" : "1").append("px ")
+						.append(thickRight ? "2" : ((col + 1) % 3 == 0 ? "2" : "1")).append("px ")
+						.append(thickBottom ? "2" : ((row + 1) % 3 == 0 ? "2" : "1")).append("px ")
+						.append(thickLeft ? "2" : "1").append("px;");
+
+				cell.setStyle(style.toString());
 				sudokuGrid.add(cell, col, row);
 				textFields[row][col] = cell;
 			}

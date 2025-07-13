@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
-import org.lukaszsinica.sudoku.Sudoku;
+import org.LukaszSinica.Sudoku.Sudoku;
 
 public class SudokuClassTest {
 

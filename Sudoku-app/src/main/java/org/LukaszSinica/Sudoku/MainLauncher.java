@@ -1,4 +1,4 @@
-package org.lukaszsinica.sudoku;
+package org.LukaszSinica.Sudoku;
 
 public class MainLauncher {
 
